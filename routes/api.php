@@ -29,3 +29,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+Route::post('/register', function(){
+    return 'hello kermit';
+});
