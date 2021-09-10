@@ -14,8 +14,8 @@ class AuthController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            // 'email' => 'nullable|email|unique:users',
+            // 'email' => 'required|email|unique:users',
+            'email' => 'nullable|email|unique:users',
             'password' => 'required'
         ]);
 
@@ -28,7 +28,7 @@ class AuthController extends BaseController
         if (isset($request->email)) {
             $user->email = $request->email;
         } else {
-            $user->email = null;
+            $user->email = '';
         }
         $user->password = bcrypt($request->password);
         //save the model to database
